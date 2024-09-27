@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet - Velocity</title>
+</head>
+<body>
+    <h1>Your Wallet</h1>
+    <ul>
+        {% for coin, amount in wallet.items() %}
+            <li>{{ coin }}: {{ amount }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Deposit</h2>
+    <form action="{{ url_for('deposit') }}" method="POST">
+        <input type="text" name="coin" placeholder="Coin" required>
+        <input type="number" name="amount" placeholder="Amount" required>
+        <button type="submit">Deposit</button>
+    </form>
+
+    <h2>Withdraw</h2>
+    <form action="{{ url_for('withdraw') }}" method="POST">
+        <input type="text" name="coin" placeholder="Coin" required>
+        <input type="number" name="amount" placeholder="Amount" required>
+        <button type="submit">Withdraw</button>
+    </form>
+
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
